@@ -1,4 +1,4 @@
-def generate(baddressing, role, location, site, bpeople)
+def generate(name, baddressing, role, location, site, bpeople)
     template = 
 "\\documentclass{letter}
 \\usepackage[T1]{fontenc}
@@ -10,7 +10,7 @@ def generate(baddressing, role, location, site, bpeople)
     left=20mm,
     top=0mm,
 }
-\\signature{Luke Roberts}
+\\signature{#{name}}
 \\date{}
 
 \\begin{document}
@@ -43,6 +43,7 @@ end
 #print(generate("Luke","assistant worker","tesco","indeed",false))
 
 temp = generate(
+    pgs("what is your name, false"),
     pgs("are you addressing someone specific",true) ? pgs("who are you addressing",false) : "Sir or Madam",
     pgs("what job roll are you applying for",false),
     pgs("what location are you applying to",false),
